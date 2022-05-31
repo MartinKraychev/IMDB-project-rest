@@ -9,6 +9,7 @@ from Movies.movie.serializers import MovieListSerializer, MovieDetailSerializer,
 
 
 class MovieViewSet(viewsets.ModelViewSet):
+    filterset_fields = ('name', 'genre__name', 'actors__first_name', 'actors__last_name', 'user__username')
 
     def get_serializer_class(self):
         if self.action == 'list':

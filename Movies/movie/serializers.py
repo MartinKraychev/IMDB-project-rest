@@ -20,9 +20,10 @@ class NestedGenreSerializer(serializers.ModelSerializer):
 
 
 class NestedActorsSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Actor
-        fields = ('id', 'first_name', 'last_name')
+        fields = ('id', 'first_name', 'last_name', 'full_name')
 
 
 class RatingSerializer(serializers.ModelSerializer):

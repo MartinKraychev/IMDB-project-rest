@@ -25,8 +25,11 @@ class Actor(models.Model):
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH)
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH)
 
-    def __str__(self):
+    def full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+    def __str__(self):
+        return self.full_name()
 
 
 class Movie(SoftDeleteModel):
@@ -61,7 +64,7 @@ class Movie(SoftDeleteModel):
         ratings = Rating.objects.filter(movie=self).aggregate(average=Avg('vote'))
         avg = 0
         if ratings['average'] is not None:
-            avg = float(ratings['average'])
+            avg = str(round(float(ratings['average']), 1))
         return avg
 
     def __str__(self):
