@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AnonymousUser
 from rest_framework import serializers
 
 from Movies.movie.models import Movie, Actor, Genre, Rating
@@ -55,6 +56,8 @@ class MovieDetailSerializer(serializers.ModelSerializer):
 
     def get_is_rated(self, obj):
         request_user = self.context['request'].user
+        if isinstance(request_user, AnonymousUser):
+            return None
         return Rating.objects.filter(movie=obj, user=request_user).exists()
 
     class Meta:

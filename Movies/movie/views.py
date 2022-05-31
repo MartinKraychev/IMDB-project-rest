@@ -3,6 +3,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from Movies.movie.models import Movie, Genre, Actor, Rating
+from Movies.movie.permissions import IsOwnerOfObject
 from Movies.movie.serializers import MovieListSerializer, MovieDetailSerializer, MovieDeleteUpdateCreateSerializer, \
     NestedGenreSerializer, NestedActorsSerializer, RatingSerializer
 
@@ -24,6 +25,8 @@ class MovieViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action == 'list' or self.action == 'retrieve':
             return [AllowAny(), ]
+        elif self.action == 'update' or self.action == 'destroy':
+            return [IsAuthenticated(), IsOwnerOfObject(), ]
         return [IsAuthenticated(), ]
 
     def destroy(self, request, *args, **kwargs):
