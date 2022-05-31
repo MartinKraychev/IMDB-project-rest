@@ -24,13 +24,26 @@ class NestedActorsSerializer(serializers.ModelSerializer):
         fields = ('id', 'first_name', 'last_name')
 
 
+class RatingSerializer(serializers.ModelSerializer):
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        rating_instance = Rating.objects.create(**validated_data)
+
+        return rating_instance
+
+    class Meta:
+        model = Rating
+        fields = ('vote', 'movie')
+
+
 class MovieListSerializer(serializers.ModelSerializer):
     actors = NestedActorsSerializer(many=True, )
     genre = NestedGenreSerializer(many=False, )
 
     class Meta:
         model = Movie
-        fields = ('id', 'name', 'actors', 'genre', 'poster', 'average_rating')
+        fields = ('id', 'name', 'actors', 'genre', 'poster')
 
 
 class MovieDetailSerializer(serializers.ModelSerializer):

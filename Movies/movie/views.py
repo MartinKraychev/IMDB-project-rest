@@ -1,11 +1,10 @@
-
 from rest_framework import viewsets, status, mixins
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from Movies.movie.models import Movie, Genre, Actor
+from Movies.movie.models import Movie, Genre, Actor, Rating
 from Movies.movie.serializers import MovieListSerializer, MovieDetailSerializer, MovieDeleteUpdateCreateSerializer, \
-    NestedGenreSerializer, NestedActorsSerializer
+    NestedGenreSerializer, NestedActorsSerializer, RatingSerializer
 
 
 class MovieViewSet(viewsets.ModelViewSet):
@@ -51,3 +50,10 @@ class ActorsListViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
         AllowAny,
     )
 
+
+class RatingCreateViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+    permission_classes = (
+        AllowAny,
+    )

@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator
 from django.db import models
-from django.db.models import FloatField, Avg
-from django.db.models.functions import Coalesce
+from django.db.models import Avg
+
 
 from Movies.soft_delete_app.models import SoftDeleteModel
 
