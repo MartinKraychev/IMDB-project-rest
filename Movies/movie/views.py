@@ -11,6 +11,7 @@ from Movies.movie.serializers import MovieListSerializer, MovieDetailSerializer,
 class MovieViewSet(viewsets.ModelViewSet):
     filterset_fields = ('name', 'genre__name', 'actors__first_name', 'actors__last_name', 'user__username')
 
+    # Uses a different serializers depending on action
     def get_serializer_class(self):
         if self.action == 'list':
             return MovieListSerializer
@@ -23,10 +24,12 @@ class MovieViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+    # Different permissions depending on action
     def get_permissions(self):
         if self.action == 'list' or self.action == 'retrieve':
             return [AllowAny(), ]
         elif self.action == 'update' or self.action == 'destroy':
+            # Edit or delete checks if user is owner first, returns 403 if not.
             return [IsAuthenticated(), IsOwnerOfObject(), ]
         return [IsAuthenticated(), ]
 
@@ -35,6 +38,7 @@ class MovieViewSet(viewsets.ModelViewSet):
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    # Soft delete
     def perform_destroy(self, instance):
         instance.soft_delete()
 

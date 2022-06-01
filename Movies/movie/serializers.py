@@ -28,6 +28,7 @@ class NestedActorsSerializer(serializers.ModelSerializer):
 
 class RatingSerializer(serializers.ModelSerializer):
 
+    # Adds the user from the request
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         rating_instance = Rating.objects.create(**validated_data)
@@ -55,6 +56,8 @@ class MovieDetailSerializer(serializers.ModelSerializer):
 
     is_rated = serializers.SerializerMethodField()
 
+    # Adds a field to the movie to show if user already rated it.
+    # Returns None for not authenticated user.
     def get_is_rated(self, obj):
         request_user = self.context['request'].user
         if isinstance(request_user, AnonymousUser):
@@ -68,10 +71,12 @@ class MovieDetailSerializer(serializers.ModelSerializer):
 
 class MovieDeleteUpdateCreateSerializer(serializers.ModelSerializer):
 
+    # Adds the user from the request
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         actors = validated_data.pop('actors')
         movie_instance = Movie.objects.create(**validated_data)
+        # Manually adds the many to many relation actors to the created movie
         for actor in actors:
             movie_instance.actors.add(actor)
 

@@ -60,6 +60,7 @@ class Movie(SoftDeleteModel):
         on_delete=models.CASCADE
     )
 
+    # If the movie is rated, adds an average rating from all accumulated votes.
     def average_rating(self):
         ratings = Rating.objects.filter(movie=self).aggregate(average=Avg('vote'))
         avg = 0
@@ -72,6 +73,8 @@ class Movie(SoftDeleteModel):
 
 
 class Rating(models.Model):
+    # Separate model containing all rating records from all User
+    # Not registered users can't vote
     movie = models.ForeignKey(
         Movie,
         on_delete=models.CASCADE
