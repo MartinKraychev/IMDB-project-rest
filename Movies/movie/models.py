@@ -88,3 +88,7 @@ class Rating(models.Model):
         UserModel,
         on_delete=models.CASCADE
     )
+
+    class Meta:
+        # Users can vote only once for every movie
+        unique_together = ('user', 'movie')
