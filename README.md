@@ -1,5 +1,5 @@
 # Movie Catalogue REST API with Django
-## This is a backend project set up to work with frontend module uploaded here : https://github.com/MartinKraychev/IMDB-frontend
+## This is a backend project set up to work with frontend module uploaded here : https://github.com/MartinKraychev/Movie-Catalogue-Frontend-JS
 
 To test locally:
 - Create venv
