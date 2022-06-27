@@ -1,5 +1,7 @@
-# Movie Catalogue REST API with Django
+# Movie Catalogue REST API with Django as Backend and JS, HTML, CSS for as Frontend
+# Page is used for routing and Lit-html for templating.
 ## It contains 2 apps: The Backend is in folder Movies and the frontend in frontend folder
+
 
 ## To test locally:
 ### For the Backend
@@ -11,9 +13,9 @@
 - npm i to install dependencies
 - npm start to start the http server
 
-It contains Exdended User, Movie, Genre, Actor and Rating models. All models are implemented with soft delete.
+### It contains Exdended User, Movie, Genre, Actor and Rating models. All models are implemented with soft delete.
 
-Api root:
+#### Api root:
 
 - Auth:
 
