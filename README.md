@@ -3,7 +3,7 @@
 ## It contains 2 apps: The Backend is in folder Movies and the frontend in frontend folder
 
 
-## To test locally:
+## To test locally: Use VS Code preferably
 ### For the Backend
 - Create venv
 - Install dependencies from requirements.txt
