@@ -1,12 +1,17 @@
-# Movie Catalogue REST API with Django as Backend.
-## The frontend application is located in https://github.com/MartinKraychev/movies-frontend.
+# Movie Catalogue REST API with Django as Backend and JS, HTML and CSS as Frontend.
+## Page lib is used for routing and Lit-Html for templating.
 
-## To test locally:
+
+## To test locally: Use VS Code to run both services
+
 ### For the Backend
 - Create venv
 - Install dependencies from requirements.txt
 - py manage.py runserver to start the API
 
+### For the Frontend:
+  - npm i to install dependencies.
+  - npm start to start the server.
 
 ### It contains Exdended User, Movie, Genre, Actor and Rating models. All models are implemented with soft delete.
 
