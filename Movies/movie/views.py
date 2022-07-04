@@ -63,5 +63,5 @@ class RatingCreateViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
     permission_classes = (
-        AllowAny,
+        IsAuthenticated,
     )
