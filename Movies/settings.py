@@ -24,12 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.getenv('SECRET_KEY', '')
-
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', '')
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
 
@@ -119,18 +118,18 @@ WSGI_APPLICATION = 'Movies.wsgi.application'
 
 DATABASES = {
     "default": {
-        # "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql"),
-        'ENGINE': "django.db.backends.postgresql",
-        # "NAME": os.getenv("SQL_DATABASE", "movies"),
-        "NAME": "defaultdb",
-        # "USER": os.getenv("SQL_USER", "postgres"),
-        'USER': "doadmin",
-        # "PASSWORD": os.getenv("SQL_PASSWORD", "mysecretpassword"),
-        "PASSWORD": "AVNS_F321ZwnS9xOsQvxLjjU",
-        # "HOST": os.getenv("SQL_HOST", "127.0.0.1"),
-        "HOST": "db-postgresql-lon1-99083-do-user-11957871-0.b.db.ondigitalocean.com",
-        # "PORT": os.getenv("SQL_PORT", "5432"),
-        "PORT": "25060"
+        "ENGINE": os.getenv("SQL_ENGINE", ""),
+        # 'ENGINE': "django.db.backends.postgresql",
+        "NAME": os.getenv("SQL_DATABASE", ""),
+        # "NAME": "defaultdb",
+        "USER": os.getenv("SQL_USER", ""),
+        # 'USER': "doadmin",
+        "PASSWORD": os.getenv("SQL_PASSWORD", ""),
+        # "PASSWORD": "AVNS_F321ZwnS9xOsQvxLjjU",
+        "HOST": os.getenv("SQL_HOST", ""),
+        # "HOST": "db-postgresql-lon1-99083-do-user-11957871-0.b.db.ondigitalocean.com",
+        "PORT": os.getenv("SQL_PORT", ""),
+        # "PORT": "25060"
     }
 }
 
