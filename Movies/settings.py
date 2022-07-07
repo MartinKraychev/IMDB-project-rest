@@ -28,7 +28,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '188.166.169.45').split(' ')
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
