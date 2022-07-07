@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="defaultdb@db-postgresql-lon1-99083-do-user-11957871-0.b.db.ondigitalocean.com" uuid="0c3f985f-3d11-4029-a1f1-e2a88fa8ea12">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://db-postgresql-lon1-99083-do-user-11957871-0.b.db.ondigitalocean.com:25060/defaultdb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
