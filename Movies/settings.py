@@ -119,17 +119,11 @@ WSGI_APPLICATION = 'Movies.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("SQL_ENGINE", ""),
-        # 'ENGINE': "django.db.backends.postgresql",
         "NAME": os.getenv("SQL_DATABASE", ""),
-        # "NAME": "defaultdb",
         "USER": os.getenv("SQL_USER", ""),
-        # 'USER': "doadmin",
         "PASSWORD": os.getenv("SQL_PASSWORD", ""),
-        # "PASSWORD": "AVNS_F321ZwnS9xOsQvxLjjU",
         "HOST": os.getenv("SQL_HOST", ""),
-        # "HOST": "db-postgresql-lon1-99083-do-user-11957871-0.b.db.ondigitalocean.com",
         "PORT": os.getenv("SQL_PORT", ""),
-        # "PORT": "25060"
     }
 }
 
