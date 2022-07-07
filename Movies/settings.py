@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'sk')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 
