@@ -31,7 +31,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Production')
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
-ALLOWED_HOSTS = ['Movies-dev.eu-west-2.elasticbeanstalk.com', ]
+ALLOWED_HOSTS = ['Movies-dev.eu-west-2.elasticbeanstalk.com', "127.0.0.1"]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
