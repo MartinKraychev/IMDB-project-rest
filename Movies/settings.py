@@ -116,16 +116,27 @@ WSGI_APPLICATION = 'Movies.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql_psycopg2"),
-        "NAME": os.getenv("SQL_DATABASE", "movies"),
-        "USER": os.getenv("SQL_USER", "postgres"),
-        "PASSWORD": os.getenv("SQL_PASSWORD", "mysecretpassword"),
-        "HOST": os.getenv("SQL_HOST", "127.0.0.1"),
-        "PORT": os.getenv("SQL_PORT", "5432"),
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
     }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql_psycopg2"),
+            "NAME": os.getenv("SQL_DATABASE", "movies"),
+            "USER": os.getenv("SQL_USER", "postgres"),
+            "PASSWORD": os.getenv("SQL_PASSWORD", "mysecretpassword"),
+            "HOST": os.getenv("SQL_HOST", "127.0.0.1"),
+            "PORT": os.getenv("SQL_PORT", "5432"),
+        }
 }
 
 # Password validation
