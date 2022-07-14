@@ -23,15 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'foo')
+SECRET_KEY = os.getenv('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Production')
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', '')
 
-# ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
-ALLOWED_HOSTS = ['Movies-dev.eu-west-2.elasticbeanstalk.com', "127.0.0.1"]
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
@@ -53,7 +52,6 @@ THIRD_PARTY_APPS = (
     'rest_framework.authtoken',
     'corsheaders',
     'django_filters',
-    'storages',
 
 )
 
@@ -117,40 +115,18 @@ WSGI_APPLICATION = 'Movies.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if 'RDS_DB_NAME' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
-        }
+
+DATABASES = {
+    "default": {
+        "ENGINE": os.getenv("SQL_ENGINE", ""),
+        "NAME": os.getenv("SQL_DATABASE", ""),
+        "USER": os.getenv("SQL_USER", ""),
+        "PASSWORD": os.getenv("SQL_PASSWORD", ""),
+        "HOST": os.getenv("SQL_HOST", ""),
+        "PORT": os.getenv("SQL_PORT", ""),
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql_psycopg2"),
-            "NAME": os.getenv("SQL_DATABASE", "movies"),
-            "USER": os.getenv("SQL_USER", "postgres"),
-            "PASSWORD": os.getenv("SQL_PASSWORD", "mysecretpassword"),
-            "HOST": os.getenv("SQL_HOST", "127.0.0.1"),
-            "PORT": os.getenv("SQL_PORT", "5432"),
-        }
 }
 
-if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-    AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
-
-    AWS_S3_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-
-AWS_S3_ADDRESSING_STYLE = "virtual"
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = []
