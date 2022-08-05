@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -124,6 +125,7 @@ DATABASES = {
         "PASSWORD": os.getenv("SQL_PASSWORD", ""),
         "HOST": os.getenv("SQL_HOST", ""),
         "PORT": os.getenv("SQL_PORT", ""),
+        'CONN_MAX_AGE': 500
     }
 }
 
