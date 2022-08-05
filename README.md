@@ -1,7 +1,11 @@
 # Movie Catalogue REST API with Django.
-It works together with the following frontend: https://github.com/MartinKraychev/movies-frontend. The API is deployed in Heroku.
+It works together with the following frontend: https://github.com/MartinKraychev/movies-frontend.
+
 It contains Exdended User, Movie, Genre, Actor and Rating models. All models are implemented with soft delete.
+
 Django-filter is used for searching.
+
+The API is deployed in Heroku.
 
 ## To test locally:
 
