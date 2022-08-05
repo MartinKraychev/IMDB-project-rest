@@ -1,5 +1,6 @@
 # Movie Catalogue REST API with Django.
-## It works together with the following frontend: https://github.com/MartinKraychev/movies-frontend
+## It works together with the following frontend: https://github.com/MartinKraychev/movies-frontend. The API is deployed in Digital Ocean.
+
 ## To test locally:
   - Create venv
   - Install dependencies from requirements.txt
