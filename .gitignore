@@ -1,6 +1,6 @@
 docker-compose.prod.yml
 Dockerfile.prod
 db.pgsql
-.env.prod
+.env
 
 
