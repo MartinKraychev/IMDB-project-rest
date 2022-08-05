@@ -23,20 +23,20 @@
 
 - Movies:
 
-   GET, POST -> {url}/api-movies/movies
+   GET, POST -> {url}/api-movies/movies/
    
-   GET, PUT, DELETE -> {url}/api-movies/movies/{id}
+   GET, PUT, DELETE -> {url}/api-movies/movies/{id}/
   
-   GET for search -> {url}/api-movies/movies/?{field}={fieldValue}
+   GET for search -> {url}/api-movies/movies/?{field}={fieldValue}/
   
  - Actors:
  
-   GET -> {url}/api-movies/actors
+   GET -> {url}/api-movies/actors/
   
 - Genre:
 
-  GET -> {url}/api-movies/genre
+  GET -> {url}/api-movies/genre/
  
 - Rating:
 
-  POST -> {url}/api-movies/rating
+  POST -> {url}/api-movies/rating/
