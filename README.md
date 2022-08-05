@@ -1,5 +1,5 @@
 # Movie Catalogue REST API with Django.
-## It works together with the following frontend: https://github.com/MartinKraychev/movies-frontend. The API is deployed in Digital Ocean.
+## It works together with the following frontend: https://github.com/MartinKraychev/movies-frontend. The API is deployed in Heroku.
 
 ## To test locally:
   - Create venv
@@ -10,30 +10,33 @@
 ### It contains Exdended User, Movie, Genre, Actor and Rating models. All models are implemented with soft delete.
 
 #### Api root:
+#### The deployed url is https://django-movies-rest.herokuapp.com and for locally testing use http://127.0.0.1:8000
+
 
 - Auth:
 
-  POST  -> http://127.0.0.1:8000/api-auth/register/
+  POST  -> {url}/api-auth/register/
 
-  POST  -> http://127.0.0.1:8000/api-auth/login/
+  POST  -> {url}/api-auth/login/
 
-  POST, GET  -> http://127.0.0.1:8000/api-auth/logout/
+  POST, GET  -> {url}/api-auth/logout/
 
 - Movies:
 
-   GET, POST -> http://127.0.0.1:8000/api-movies/movies
+   GET, POST -> {url}/api-movies/movies
    
-   GET, PUT, DELETE -> http://127.0.0.1:8000/api-movies/movies/{id}
+   GET, PUT, DELETE -> {url}/api-movies/movies/{id}
   
+   GET for search -> {url}/api-movies/movies/?{field}={fieldValue}
   
  - Actors:
  
-   GET -> http://127.0.0.1:8000/api-movies/actors
+   GET -> {url}/api-movies/actors
   
 - Genre:
 
-  GET -> http://127.0.0.1:8000/api-movies/genre
+  GET -> {url}/api-movies/genre
  
 - Rating:
 
-  POST -> http://127.0.0.1:8000/api-movies/rating
+  POST -> {url}/api-movies/rating
